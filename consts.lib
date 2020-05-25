@@ -1,0 +1,4 @@
+// -*- mode: faust -*-
+
+preset_size = 1024;
+op_param_size = 64;

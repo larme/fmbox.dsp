@@ -1,0 +1,3 @@
+// -*- mode: faust -*-
+
+main_freq = 0;
