@@ -10,11 +10,12 @@ with {
   main_freq = preader(0, params.main_freq);
   harmony_ratio = preader(my_op_idx, params.harmony_ratio);
   freq = harmony_ratio * main_freq;
-  amp_mi_factor = preader(my_op_idx, amp_mi_factor);
+  amp_mi_factor = preader(my_op_idx, params.amp_mi_factor);
 
-  get_out_amp(idx) = preader(my_op_idx, idx);
-  audio_out = os.osc(freq + mod_in) * amp_mi_factor * get_out_amp(0);
-  out_to_op(idx) = audio_out * freq * idx * get_out_amp(idx);
+  get_out_amp(op_idx) = preader(my_op_idx, params.out_amp_base + op_idx);
+  pre_audio_out = os.osc(freq + mod_in) * amp_mi_factor;
+  audio_out = pre_audio_out * get_out_amp(0);
+  out_to_op(op_idx) = pre_audio_out * freq * get_out_amp(op_idx) * 0.0001;
 };
 
 test_preset_waveform = waveform{440.0, 0, 0, 0, 0,
