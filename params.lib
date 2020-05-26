@@ -3,3 +3,4 @@
 main_freq = 0;
 harmony_ratio = 0;
 amp_mi_factor = 1;
+out_amp_base = 2;
