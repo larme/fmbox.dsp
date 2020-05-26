@@ -1,14 +1,12 @@
 // -*- mode: faust -*-
 
-consts = library("consts.lib");
-
 // given preset table and preset index, access parameter by op index
 // and parameter index
 
-param_reader(preset_tbl, preset_idx, op_idx, param_idx) = param
+param_reader(preset_tbl, preset_size, op_param_size, preset_idx, op_idx, param_idx) = param
 with {
-  preset_offset = preset_idx * consts.preset_size;
-  op_offset = op_idx * consts.op_param_size;
+  preset_offset = preset_idx * preset_size;
+  op_offset = op_idx * op_param_size;
   idx = preset_offset + op_offset + param_idx;
   param = preset_tbl(idx);
 };
